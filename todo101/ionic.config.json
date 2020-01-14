@@ -1,5 +1,7 @@
 {
   "name": "todo101",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

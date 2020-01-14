@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Infamous todos</string>
+    <string name="title_activity_main">Infamous todos</string>
+    <string name="package_name">com.baraabytes.infamous.todos</string>
+    <string name="custom_url_scheme">com.baraabytes.infamous.todos</string>
+</resources>

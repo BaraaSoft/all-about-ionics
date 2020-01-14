@@ -1,0 +1,8 @@
+{
+  "appId": "com.baraabytes.infamous.todos",
+  "appName": "Infamous todos",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
