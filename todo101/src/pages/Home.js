@@ -26,9 +26,11 @@ import { book, build, colorFill, grid, trash, add, notifications } from 'ionicon
 import React from 'react';
 
 import styled from 'styled-components';
+import './Home.css';
 
 import { ListTodos } from '../components/List';
-import { SideSlider } from '../components/sideSlider/sideSlider'
+import { SideSlider } from '../components/sideSlider/sideSlider';
+
 
 const TextDiv = styled(IonLabel)`
   height:100%;
@@ -48,16 +50,18 @@ const HeaderDiv = styled(IonHeader)`
   height:140px;
   background-color:blue;
   background: #00c6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);/* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 `;
 const IonToolbarDiv = styled(IonToolbar)`
-  background-color:blue;
   background: #00c6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   border:none;
+
+  
 `;
 
 
@@ -80,7 +84,7 @@ const IonBadgeToolbarDiv = styled(IonBadge)`
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   position: absolute;
   top: 1px;
-  left: -9px;
+  left: -8px;
   border-radius:100px;
 `;
 
@@ -90,23 +94,23 @@ const IonBadgeToolbarDiv = styled(IonBadge)`
 const HomePage = (props) => {
   return (
     <IonPage>
-      <IonHeader>
-        <HeaderDiv>
-          <IonToolbarDiv>
-            <IonButtons slot="start">
-              <IonMenuButton color="light" />
-            </IonButtons>
-            <IonTitleDiv>Infamous todos</IonTitleDiv>
-            <IonButtons slot="end">
-              <IconButtonRightDiv>
-                <IonIcon size="medium" color="light" icon={notifications} />
-              </IconButtonRightDiv>
-              <IonBadgeToolbarDiv color="danger">9</IonBadgeToolbarDiv>
-            </IonButtons>
-          </IonToolbarDiv>
-        </HeaderDiv>
 
-      </IonHeader>
+      <HeaderDiv >
+        <IonToolbarDiv mode="ios">
+          <IonButtons slot="start">
+            <IonMenuButton color="light" />
+          </IonButtons>
+          <IonTitleDiv>Infamous todos</IonTitleDiv>
+          <IonButtons slot="end">
+            <IconButtonRightDiv>
+              <IonIcon size="medium" color="light" icon={notifications} />
+            </IconButtonRightDiv>
+            <IonBadgeToolbarDiv color="danger">9</IonBadgeToolbarDiv>
+          </IonButtons>
+        </IonToolbarDiv>
+      </HeaderDiv>
+
+
       <IonContent fullscreen >
         <SideSlider />
         <ListTodos />

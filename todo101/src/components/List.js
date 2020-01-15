@@ -33,7 +33,7 @@ const ItemDiv = styled(IonItemOption)`
 `;
 
 const IonItemDiv = styled(IonItem)`
-border:1px solid white;
+    border:1px solid white;
     border-radius:10px;
 `;
 
