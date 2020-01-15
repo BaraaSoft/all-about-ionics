@@ -1,0 +1,6 @@
+
+
+ion-toolbar{
+    --background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);
+    --background: linear-gradient(to right, #0072ff, #00c6ff); 
+}

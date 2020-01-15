@@ -26,23 +26,12 @@ import { book, build, colorFill, grid, trash, add, notifications } from 'ionicon
 import React from 'react';
 
 import styled from 'styled-components';
-
+import './Home.css';
 
 import { ListTodos } from '../components/List';
 import { SideSlider } from '../components/sideSlider/sideSlider';
 
 
-const TextDiv = styled(IonLabel)`
-  height:100%;
-  border-bottom:1px solid #f5f5f5;
-`;
-
-const ItemDiv = styled(IonItemOption)`
-  -webkit-box-shadow: inset 8px -1px 5px -8px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 8px -1px 5px -8px rgba(0,0,0,0.75);
-  box-shadow: inset 8px -1px 5px -8px rgba(0,0,0,0.75);
-  box-shadow: 2px 1px 6px #5a93f93b, 1px -2px 7px 2px #dae7ffa1;
-`;
 
 
 
@@ -51,7 +40,8 @@ const HeaderDiv = styled(IonHeader)`
   background-color:blue;
   background: #00c6ff;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);/* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0072ff, #00c6ff) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
   
 `;
 const IonToolbarDiv = styled(IonToolbar)`
@@ -60,8 +50,6 @@ const IonToolbarDiv = styled(IonToolbar)`
   background: linear-gradient(to right, #0072ff, #00c6ff) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   border:none;
-
-  
 `;
 
 
@@ -95,7 +83,7 @@ const HomePage = (props) => {
   return (
     <IonPage>
 
-      <HeaderDiv >
+      <HeaderDiv color="primary">
         <IonToolbarDiv mode="ios">
           <IonButtons slot="start">
             <IonMenuButton color="light" />
@@ -108,11 +96,11 @@ const HomePage = (props) => {
             <IonBadgeToolbarDiv color="danger">9</IonBadgeToolbarDiv>
           </IonButtons>
         </IonToolbarDiv>
+
       </HeaderDiv>
 
-
-      <IonContent fullscreen >
-        <SideSlider />
+      <SideSlider />
+      <IonContent fullscreen>
         <ListTodos />
       </IonContent>
       <IonFab vertical="bottom" horizontal="end" slot="fixed" >

@@ -12,17 +12,23 @@ import {
 } from '@ionic/react';
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
 
+const IonToolbarDiv = styled(IonToolbar)`
+  height:140px;
+`;
 
 
 const Menu = ({ appPages }) => (
   <IonMenu contentId="main" type="overlay">
+
     <IonHeader>
-      <IonToolbar>
-        <IonTitle>Menu</IonTitle>
-      </IonToolbar>
+      <IonToolbarDiv>
+        <IonTitle color="light">Menu</IonTitle>
+      </IonToolbarDiv>
     </IonHeader>
+
     <IonContent>
       <IonList>
         {appPages.map((appPage, index) => {
