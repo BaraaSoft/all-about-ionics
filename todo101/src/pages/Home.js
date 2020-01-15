@@ -26,7 +26,7 @@ import { book, build, colorFill, grid, trash, add, notifications } from 'ionicon
 import React from 'react';
 
 import styled from 'styled-components';
-import './Home.css';
+
 
 import { ListTodos } from '../components/List';
 import { SideSlider } from '../components/sideSlider/sideSlider';
