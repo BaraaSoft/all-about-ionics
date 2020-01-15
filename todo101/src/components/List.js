@@ -32,6 +32,11 @@ const ItemDiv = styled(IonItemOption)`
   box-shadow: inset 8px -1px 5px -8px rgba(0,0,0,0.75);
 `;
 
+const IonItemDiv = styled(IonItem)`
+border:1px solid white;
+    border-radius:10px;
+`;
+
 const MainDiv = styled.div`
 
 `;
@@ -70,7 +75,7 @@ class ListTodosIonic extends Component {
     }
 
 
-    renderListItem
+
 
     render() {
         return (
