@@ -30,9 +30,7 @@ import './Home.css';
 
 import { ListTodos } from '../components/List';
 import { SideSlider } from '../components/sideSlider/sideSlider';
-
-
-
+import { ListSlider, Slider } from '../components/listSlider';
 
 
 const HeaderDiv = styled(IonHeader)`
@@ -96,13 +94,16 @@ const HomePage = (props) => {
             <IonBadgeToolbarDiv color="danger">9</IonBadgeToolbarDiv>
           </IonButtons>
         </IonToolbarDiv>
-
       </HeaderDiv>
 
       <SideSlider />
+
       <IonContent fullscreen>
-        <ListTodos />
+        <ListSlider>
+          <Slider.Item></Slider.Item>
+        </ListSlider>
       </IonContent>
+
       <IonFab vertical="bottom" horizontal="end" slot="fixed" >
         <IonFabButton color="primary">
           <IonIcon size="large" color="light" icon={add} />
