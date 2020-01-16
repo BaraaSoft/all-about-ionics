@@ -6,6 +6,8 @@ import { useSpring, animated, interpolate } from 'react-spring';
 import { Progress } from 'antd';
 import './Silder.css';
 const SliderDiv = styled.div`
+    position:absolute;
+    top:130px;
     width:100%;
     background-color:transparent;
     height:100px;
@@ -27,6 +29,7 @@ const SpaceDivHorizontal = styled.div`
 `;
 
 const SliderItemDiv = styled(animated.div)`
+
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
     transform: ${({ active }) => active ? 'scale(1) translateZ(0) perspective(1px)' : 'scale(0.88) translateZ(0) perspective(1px);'};
@@ -42,6 +45,7 @@ const SliderItemDiv = styled(animated.div)`
     padding:12px;
     -webkit-box-shadow: 0 0px 20px rgba(0, 0, 0, 0.19), 0 6px 6px #f5f0f03b;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.19), 0 6px 4px #f5f0f03b;
+
 `;
 
 
@@ -123,6 +127,8 @@ class SideSlider extends Component {
     render() {
         const { selected } = this.state;
         return (
+
+
             <SliderDiv {...this.props}>
                 <SpaceDivHorizontal></SpaceDivHorizontal>
                 <ContentSlider itemId={selected["1"]} active={selected["1"]} title="Today's list" datetime={moment().format('ll')} onClick={(e) => this.onItemClicked.call(this, { id: "1" })} />
@@ -130,6 +136,7 @@ class SideSlider extends Component {
                 <ContentSlider itemId={selected["3"]} active={selected["3"]} onClick={(e) => this.onItemClicked.call(this, { id: "3" })}></ContentSlider>
                 <SpaceDivHorizontal></SpaceDivHorizontal>
             </SliderDiv>
+
         )
     }
 }

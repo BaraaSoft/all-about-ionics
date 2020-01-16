@@ -94,11 +94,13 @@ const HomePage = (props) => {
             <IonBadgeToolbarDiv color="danger">9</IonBadgeToolbarDiv>
           </IonButtons>
         </IonToolbarDiv>
+        <SideSlider />
       </HeaderDiv>
 
-      <SideSlider />
+
 
       <IonContent fullscreen>
+
         <ListSlider>
           <Slider.Item></Slider.Item>
         </ListSlider>
