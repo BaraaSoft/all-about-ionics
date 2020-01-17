@@ -34,7 +34,7 @@ const SliderItemDiv = styled(animated.div)`
     -webkit-font-smoothing: subpixel-antialiased;
     transform: ${({ active }) => active ? 'scale(1) translateZ(0) perspective(1px)' : 'scale(0.88) translateZ(0) perspective(1px);'};
     position:relative;
-    min-width: 42%;
+    min-width: 44%;
     min-height: min-content; 
     margin:16px 4px;
     background-color:white;

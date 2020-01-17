@@ -98,6 +98,7 @@ const ItemSlider = function (props) {
         const [dirX, dirY] = direction;
 
         set({ x: down && (dirY == 0) ? mx : -8 })
+
     }, { axis: 'x' })
 
     return (
