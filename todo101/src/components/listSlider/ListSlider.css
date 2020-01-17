@@ -1,0 +1,32 @@
+
+
+ion-checkbox {
+    --border-radius:6px;
+    --size:28px;
+    border-color: white;
+    --border-color: white;
+}
+
+.red-highlighter{
+    background-color: #FFCAB2;
+}
+
+.orange-highlighter{
+    background-color: #FFEBBE;
+}
+
+.yellow-highlighter{
+   background-color:#FDFFC9;
+}
+
+.green-highlighter{
+    background-color:#E2FECC;
+}
+
+.blue-highlighter{
+    background-color:#D3F3FF;
+}
+
+.pink-highlighter{
+    background-color:#FDE0DC;
+}
