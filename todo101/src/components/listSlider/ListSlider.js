@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { useSpring, animated, interpolate } from 'react-spring';
-
-import { useWindowSize } from '../../util';
+import { useDrag } from 'react-use-gesture'
 
 import {
     IonCheckbox,
     IonList,
-    IonListHeader,
-    IonLabel
 } from '@ionic/react';
-import { book, build, colorFill, grid, trash, add, notifications } from 'ionicons/icons';
+import { trash } from 'ionicons/icons';
+
+import { useWindowSize } from '../../util';
 import './ListSlider.css';
+
+
 
 
 const ContainerDiv = styled(IonList)`
@@ -37,6 +38,7 @@ const ColMainDiv = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    position:relative;
 `;
 
 const ColSecondaryDiv = styled.div`
@@ -48,9 +50,10 @@ const ColSecondaryDiv = styled.div`
     align-items:center;
 `;
 
-const CardDiv = styled.div`
+const CardDiv = styled(animated.div)`
     width:100%;
     height:100%;
+  
     margin:16px;
     margin-left:0px;
     border-radius:6px;
@@ -58,6 +61,9 @@ const CardDiv = styled.div`
     background-color: ${({ color }) => color};
     box-shadow: 0px 2px 17px 0px rgba(0, 0, 0, 0.0), 1px 1px 6px 0px rgba(0,0,0,0.22);
 
+
+    position:absolute;
+    top:-20px;
 `;
 const CheckBoxDiv = styled.div`
    
@@ -71,26 +77,40 @@ const CheckBoxDiv = styled.div`
 `;
 
 const FadeDiv = styled.div`
-width:100%;
-height:40px;
-background-color:white;
-position:absolute;
-top:10px;
+    width:100%;
+    height:40px;
+    background-color:white;
+    position:absolute;
+    top:10px;
+    
 `;
 
 
 const ItemSlider = function (props) {
+    const { width, height } = useWindowSize();
+    const { isScrolling } = props;
+
+    const [{ x }, set] = useSpring(() => ({ x: -8 }));
+
+    const bind = useDrag(({ down, movement: [mx, my], direction }, ) => {
+        console.log({ direction })
+        //const precentDist = (distance / width * 100)
+        const [dirX, dirY] = direction;
+
+        set({ x: down && (dirY == 0) ? mx : -8 })
+    }, { axis: 'x' })
+
     return (
         <RowDiv>
 
             <ColSecondaryDiv>
-                <CheckBoxDiv>
+                <CheckBoxDiv >
                     <IonCheckbox />
                 </CheckBoxDiv>
 
             </ColSecondaryDiv>
             <ColMainDiv>
-                <CardDiv color={props.color} >
+                <CardDiv {...bind()} color={props.color} style={{ left: x }} >
                 </CardDiv>
             </ColMainDiv>
         </RowDiv>
@@ -108,22 +128,38 @@ class ListSliderComponent extends Component {
         blue: '#D3F3FF',
         pink: '#FDE0DC'
     }
+
+    state = {
+        isScrolling: false
+    }
+    constructor(props) {
+        super(props);
+        this.timer = null;
+    }
+    onScrollEvent(e) {
+        this.setState({ isScrolling: true })
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.setState({ isScrolling: false })
+        }, 500);
+    }
     render() {
+        const { isScrolling } = this.state;
         return (
-            <ContainerDiv>
-                <ItemSlider color={this.colors['red']} />
-                <ItemSlider color={this.colors['yellow']} />
-                <ItemSlider color={this.colors['green']} />
-                <ItemSlider color={this.colors['blue']} />
-                <ItemSlider color={this.colors['orange']} />
-                <ItemSlider color={this.colors['pink']} />
-                <ItemSlider color={this.colors['red']} />
-                <ItemSlider color={this.colors['yellow']} />
-                <ItemSlider color={this.colors['green']} />
-                <ItemSlider color={this.colors['blue']} />
-                <ItemSlider color={this.colors['orange']} />
-                <ItemSlider color={this.colors['pink']} />
-            </ContainerDiv>
+            <ContainerDiv onScroll={this.onScrollEvent.bind(this)}   >
+                <ItemSlider isScrolling color={this.colors['red']} ></ItemSlider>
+                <ItemSlider isScrolling color={this.colors['yellow']} />
+                <ItemSlider isScrolling color={this.colors['green']} />
+                <ItemSlider isScrolling color={this.colors['blue']} />
+                <ItemSlider isScrolling color={this.colors['orange']} />
+                <ItemSlider isScrolling color={this.colors['pink']} />
+                <ItemSlider isScrolling color={this.colors['red']} />
+                <ItemSlider isScrolling color={this.colors['yellow']} />
+                <ItemSlider isScrolling color={this.colors['green']} />
+                <ItemSlider isScrolling color={this.colors['blue']} />
+                <ItemSlider isScrolling color={this.colors['orange']} />
+                <ItemSlider isScrolling color={this.colors['pink']} />
+            </ContainerDiv >
         );
     }
 }
