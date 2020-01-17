@@ -102,6 +102,8 @@ const ItemSlider = function (props) {
             } else {
                 set({ x: down ? mx : -8 });
             }
+        } else {
+            down && set({ x: -8 });
         }
 
 

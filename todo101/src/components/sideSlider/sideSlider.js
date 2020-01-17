@@ -83,7 +83,7 @@ const ContentSlider = function (props) {
     const { active } = props;
 
     const { size, shadowColor } = useSpring({
-        size: active ? 1.0 : 0.86,
+        size: active ? 1.1 : 0.86,
         shadowColor: active ? 0 : 1
     });
     const sizeInpr = size.interpolate({ map: Math.abs, range: [0, 1], output: ['scale(0)', 'scale(1)'], extraplote: 'clamp' });
