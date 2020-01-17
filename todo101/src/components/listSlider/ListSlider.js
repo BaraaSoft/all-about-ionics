@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { useSpring, animated, interpolate } from 'react-spring';
 
+import { useWindowSize } from '../../util';
+
 
 
 const ContainerDiv = styled.div`

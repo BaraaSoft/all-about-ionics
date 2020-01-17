@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { home, list } from 'ionicons/icons';
 
+
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -40,7 +42,7 @@ const appPages = [
 ];
 
 const App = (props) => (
-  <IonApp>
+  <IonApp >
     <IonReactRouter>
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
