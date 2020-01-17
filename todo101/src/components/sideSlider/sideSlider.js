@@ -18,13 +18,14 @@ const SliderDiv = styled.div`
     margin-top:-50px;
 
     &::-webkit-scrollbar {
+        display:none;
         height:0px;
         width: 0px;  /* Remove scrollbar space */
         background: transparent;  /* Optional: just make scrollbar invisible */
     }
 `;
 const SpaceDivHorizontal = styled.div`
-    min-width:16px;
+    min-width:12px;
     min-height: min-content; 
 `;
 
@@ -34,9 +35,9 @@ const SliderItemDiv = styled(animated.div)`
     -webkit-font-smoothing: subpixel-antialiased;
     transform: ${({ active }) => active ? 'scale(1) translateZ(0) perspective(1px)' : 'scale(0.88) translateZ(0) perspective(1px);'};
     position:relative;
-    min-width: 44%;
+    min-width: 43%;
     min-height: min-content; 
-    margin:16px 4px;
+    margin:16px 2px;
     background-color:white;
     z-index:30;
     overflow:hidden;
@@ -69,7 +70,7 @@ const ProgrssDiv = styled.div`
     justify-content:center;
     align-items:center;
 
-    right:8px;
+    right:4px;
     top:0px;
     height:100%;
     width:30;
@@ -82,7 +83,7 @@ const ContentSlider = function (props) {
     const { active } = props;
 
     const { size, shadowColor } = useSpring({
-        size: active ? 1.1 : 0.88,
+        size: active ? 1.0 : 0.86,
         shadowColor: active ? 0 : 1
     });
     const sizeInpr = size.interpolate({ map: Math.abs, range: [0, 1], output: ['scale(0)', 'scale(1)'], extraplote: 'clamp' });

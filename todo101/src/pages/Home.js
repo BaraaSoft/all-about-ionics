@@ -98,8 +98,7 @@ const HomePage = (props) => {
       </HeaderDiv>
 
 
-
-      <IonContent fullscreen>
+      <IonContent style={{ overflow: 'hiden' }} forceOverscroll={false} fullscreen={true} >
 
         <ListSlider>
           <Slider.Item></Slider.Item>

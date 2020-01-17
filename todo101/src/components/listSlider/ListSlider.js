@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { useSpring, animated, interpolate } from 'react-spring';
-import { useDrag } from 'react-use-gesture'
+import { useSpring, animated, interpolate, config } from 'react-spring';
+import { useDrag, useGesture, } from 'react-use-gesture'
 
 import {
     IonCheckbox,
@@ -22,6 +22,8 @@ const ContainerDiv = styled(IonList)`
     overflow-y:auto;
     position:relative;
     padding-top:28px;
+    overflow-x:hidden;
+    margin-bottom:0px;
 `;
 
 const RowDiv = styled.div`
@@ -61,7 +63,7 @@ const CardDiv = styled(animated.div)`
     background-color: ${({ color }) => color};
     box-shadow: 0px 2px 17px 0px rgba(0, 0, 0, 0.0), 1px 1px 6px 0px rgba(0,0,0,0.22);
 
-
+left:-8px;
     position:absolute;
     top:-20px;
 `;
@@ -88,18 +90,24 @@ const FadeDiv = styled.div`
 
 const ItemSlider = function (props) {
     const { width, height } = useWindowSize();
-    const { isScrolling } = props;
 
-    const [{ x }, set] = useSpring(() => ({ x: -8 }));
+    const [{ x }, set] = useSpring(() => ({ x: -8 }), { config: config.wobbly });
 
-    const bind = useDrag(({ down, movement: [mx, my], direction }, ) => {
-        console.log({ direction })
-        //const precentDist = (distance / width * 100)
-        const [dirX, dirY] = direction;
+    const bind = useDrag(({ down, movement: [mx, my], direction }) => {
 
-        set({ x: down && (dirY == 0) ? mx : -8 })
+        let distCross = Math.abs((mx / width));
+        if (mx < 0) {
+            if (distCross > 0.37) {
+                set({ x: -(width * .5) });
+            } else {
+                set({ x: down ? mx : -8 });
+            }
+        }
 
-    }, { axis: 'x' })
+
+
+
+    }, { delay: 1500, axis: 'x', filterTaps: true, eventOptions: { pointer: false } });
 
     return (
         <RowDiv>
@@ -111,7 +119,7 @@ const ItemSlider = function (props) {
 
             </ColSecondaryDiv>
             <ColMainDiv>
-                <CardDiv {...bind()} color={props.color} style={{ left: x }} >
+                <CardDiv onClick={(e) => set({ x: -8 })} {...bind()} color={props.color} style={{ left: x }} >
                 </CardDiv>
             </ColMainDiv>
         </RowDiv>
@@ -145,22 +153,22 @@ class ListSliderComponent extends Component {
         }, 500);
     }
     render() {
-        const { isScrolling } = this.state;
+
         return (
-            <ContainerDiv onScroll={this.onScrollEvent.bind(this)}   >
-                <ItemSlider isScrolling color={this.colors['red']} ></ItemSlider>
-                <ItemSlider isScrolling color={this.colors['yellow']} />
-                <ItemSlider isScrolling color={this.colors['green']} />
-                <ItemSlider isScrolling color={this.colors['blue']} />
-                <ItemSlider isScrolling color={this.colors['orange']} />
-                <ItemSlider isScrolling color={this.colors['pink']} />
-                <ItemSlider isScrolling color={this.colors['red']} />
-                <ItemSlider isScrolling color={this.colors['yellow']} />
-                <ItemSlider isScrolling color={this.colors['green']} />
-                <ItemSlider isScrolling color={this.colors['blue']} />
-                <ItemSlider isScrolling color={this.colors['orange']} />
-                <ItemSlider isScrolling color={this.colors['pink']} />
-            </ContainerDiv >
+            <ContainerDiv {...this.props} onScroll={this.onScrollEvent.bind(this)}>
+                <ItemSlider color={this.colors['red']} ></ItemSlider>
+                <ItemSlider color={this.colors['yellow']}></ItemSlider>
+                <ItemSlider color={this.colors['green']}></ItemSlider>
+                <ItemSlider color={this.colors['blue']}></ItemSlider>
+                <ItemSlider color={this.colors['orange']} ></ItemSlider>
+                <ItemSlider color={this.colors['pink']} ></ItemSlider>
+                <ItemSlider color={this.colors['red']} ></ItemSlider>
+                <ItemSlider color={this.colors['yellow']} ></ItemSlider>
+                <ItemSlider color={this.colors['green']} ></ItemSlider>
+                <ItemSlider color={this.colors['blue']} ></ItemSlider>
+                <ItemSlider color={this.colors['orange']} ></ItemSlider>
+                <ItemSlider color={this.colors['pink']} ></ItemSlider>
+            </ContainerDiv>
         );
     }
 }
