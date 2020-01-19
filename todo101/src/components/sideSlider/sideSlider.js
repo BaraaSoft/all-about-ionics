@@ -7,7 +7,7 @@ import { Progress } from 'antd';
 import './Silder.css';
 const SliderDiv = styled.div`
     position:absolute;
-    top:130px;
+    top:150px;
     width:100%;
     background-color:transparent;
     height:100px;

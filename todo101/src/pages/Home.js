@@ -34,7 +34,7 @@ import { ListSlider, Slider } from '../components/listSlider';
 
 
 const HeaderDiv = styled(IonHeader)`
-  height:140px;
+  height:158px;
   background-color:blue;
   background: #00c6ff;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);/* Chrome 10-25, Safari 5.1-6 */

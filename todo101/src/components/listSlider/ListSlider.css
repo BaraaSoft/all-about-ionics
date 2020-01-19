@@ -5,28 +5,38 @@ ion-checkbox {
     --size:28px;
     border-color: white;
     --border-color: white;
+     --checkmark-color:#313131;
 }
-
+.red-highlighter ion-checkbox,
 .red-highlighter{
-    background-color: #FFCAB2;
+    /* --background:#FFCAB2; */
+    --background-checked:#FFCAB2;
+    --border-color-checked:#FFCAB2;
+   
 }
 
-.orange-highlighter{
-    background-color: #FFEBBE;
+.orange-highlighter ion-checkbox {
+ 
+     --background-checked:#FFEBBE;
+    --border-color-checked:#FFEBBE;
 }
 
-.yellow-highlighter{
-   background-color:#FDFFC9;
+.yellow-highlighter ion-checkbox{
+    --background-checked:#FDFFC9;
+    --border-color-checked:#FDFFC9;
 }
 
-.green-highlighter{
-    background-color:#E2FECC;
+.green-highlighter ion-checkbox{
+     --background-checked:#E2FECC;
+    --border-color-checked:#E2FECC;
 }
 
-.blue-highlighter{
-    background-color:#D3F3FF;
+.blue-highlighter ion-checkbox{
+     --background-checked:#D3F3FF;
+    --border-color-checked:#D3F3FF;
 }
 
-.pink-highlighter{
-    background-color:#FDE0DC;
+.pink-highlighter ion-checkbox{
+    --background-checked:#FDE0DC;
+    --border-color-checked:#FDE0DC;
 }

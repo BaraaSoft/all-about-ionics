@@ -84,7 +84,6 @@ const FadeDiv = styled.div`
     background-color:white;
     position:absolute;
     top:10px;
-    
 `;
 
 
@@ -115,13 +114,13 @@ const ItemSlider = function (props) {
         <RowDiv>
 
             <ColSecondaryDiv>
-                <CheckBoxDiv >
-                    <IonCheckbox />
+                <CheckBoxDiv className={props.checkboxStyle && props.checkboxStyle}>
+                    <IonCheckbox mode="ios" />
                 </CheckBoxDiv>
 
             </ColSecondaryDiv>
             <ColMainDiv>
-                <CardDiv onClick={(e) => set({ x: -8 })} {...bind()} color={props.color} style={{ left: x }} >
+                <CardDiv onClick={(e) => e} {...bind()} color={props.color} style={{ left: x }} >
                 </CardDiv>
             </ColMainDiv>
         </RowDiv>
@@ -158,18 +157,19 @@ class ListSliderComponent extends Component {
 
         return (
             <ContainerDiv {...this.props} onScroll={this.onScrollEvent.bind(this)}>
-                <ItemSlider color={this.colors['red']} ></ItemSlider>
-                <ItemSlider color={this.colors['yellow']}></ItemSlider>
-                <ItemSlider color={this.colors['green']}></ItemSlider>
-                <ItemSlider color={this.colors['blue']}></ItemSlider>
-                <ItemSlider color={this.colors['orange']} ></ItemSlider>
-                <ItemSlider color={this.colors['pink']} ></ItemSlider>
-                <ItemSlider color={this.colors['red']} ></ItemSlider>
-                <ItemSlider color={this.colors['yellow']} ></ItemSlider>
-                <ItemSlider color={this.colors['green']} ></ItemSlider>
-                <ItemSlider color={this.colors['blue']} ></ItemSlider>
-                <ItemSlider color={this.colors['orange']} ></ItemSlider>
-                <ItemSlider color={this.colors['pink']} ></ItemSlider>
+                <ItemSlider checkboxStyle={'red-highlighter'} color={this.colors['red']} ></ItemSlider>
+                <ItemSlider checkboxStyle={'yellow-highlighter'} color={this.colors['yellow']}></ItemSlider>
+                <ItemSlider checkboxStyle={'green-highlighter'} color={this.colors['green']}></ItemSlider>
+                <ItemSlider checkboxStyle={'blue-highlighter'} color={this.colors['blue']}></ItemSlider>
+                <ItemSlider checkboxStyle={'orange-highlighter'} color={this.colors['orange']} ></ItemSlider>
+                <ItemSlider checkboxStyle={'pink-highlighter'} color={this.colors['pink']} ></ItemSlider>
+
+                <ItemSlider checkboxStyle={'red-highlighter'} color={this.colors['red']} ></ItemSlider>
+                <ItemSlider checkboxStyle={'yellow-highlighter'} color={this.colors['yellow']}></ItemSlider>
+                <ItemSlider checkboxStyle={'green-highlighter'} color={this.colors['green']}></ItemSlider>
+                <ItemSlider checkboxStyle={'blue-highlighter'} color={this.colors['blue']}></ItemSlider>
+                <ItemSlider checkboxStyle={'orange-highlighter'} color={this.colors['orange']} ></ItemSlider>
+                <ItemSlider checkboxStyle={'pink-highlighter'} color={this.colors['pink']} ></ItemSlider>
             </ContainerDiv>
         );
     }
