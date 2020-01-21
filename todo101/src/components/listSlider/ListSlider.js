@@ -106,13 +106,13 @@ const ItemSlider = function (props) {
                 set({ x: down ? mx : -8 });
             }
         } else {
-
-            if (distCross > 0.20) {
-                set({ x: -8 });
-            } else {
-                (down) && set({ x: mx });
-                (!down) && set({ x: -8 });
-            }
+            (down) && set({ x: -8 });
+            // if (distCross > 0.20) {
+            //     set({ x: -8 });
+            // } else {
+            //     (down) && set({ x: mx });
+            //     (!down) && set({ x: -8 });
+            // }
             //console.log({ distCross })
 
             // if (distCross > 0.37) {
@@ -185,7 +185,7 @@ class ListSliderComponent extends Component {
 
         return (
             <ContainerDiv {...this.props} onScroll={this.onScrollEvent.bind(this)}>
-                <TestDiv>test</TestDiv>
+
                 <ItemSlider checkboxStyle={'red-highlighter'} color={this.colors['red']} ></ItemSlider>
                 <ItemSlider checkboxStyle={'yellow-highlighter'} color={this.colors['yellow']}></ItemSlider>
                 <ItemSlider checkboxStyle={'green-highlighter'} color={this.colors['green']}></ItemSlider>
