@@ -95,17 +95,23 @@ const ItemSlider = function (props) {
     const bind = useDrag(({ down, movement: [mx, my], direction, swipe }) => {
 
         let distCross = Math.abs((mx / width));
+
+        const [swipeX, swipeY] = swipe;
+        console.log({ swipeX });
         if (mx < 0) {
+
             if (distCross > 0.37) {
-                set({ x: -(width * .5) });
+                (down) && set({ x: -(width * .5) })
             } else {
-                set({ x: swipe ? mx : -8 });
+                set({ x: down ? mx : -8 });
             }
         } else {
+
             if (distCross > 0.20) {
                 set({ x: -8 });
             } else {
-                swipe && set({ x: mx });
+                (down) && set({ x: mx });
+                (!down) && set({ x: -8 });
             }
             //console.log({ distCross })
 
