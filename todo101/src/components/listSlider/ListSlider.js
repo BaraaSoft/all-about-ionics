@@ -92,17 +92,29 @@ const ItemSlider = function (props) {
 
     const [{ x }, set] = useSpring(() => ({ x: -8 }), { config: config.wobbly });
 
-    const bind = useDrag(({ down, movement: [mx, my], direction }) => {
+    const bind = useDrag(({ down, movement: [mx, my], direction, swipe }) => {
 
         let distCross = Math.abs((mx / width));
         if (mx < 0) {
             if (distCross > 0.37) {
                 set({ x: -(width * .5) });
             } else {
-                set({ x: down ? mx : -8 });
+                set({ x: swipe ? mx : -8 });
             }
         } else {
-            down && set({ x: -8 });
+            if (distCross > 0.20) {
+                set({ x: -8 });
+            } else {
+                swipe && set({ x: mx });
+            }
+            //console.log({ distCross })
+
+            // if (distCross > 0.37) {
+            //     set({ x: -(width * .5) });
+            // } else {
+            //     set({ x: swipe ? mx : -8 });
+            // }
+            // down && set({ x: -8 });
         }
 
 
@@ -126,6 +138,16 @@ const ItemSlider = function (props) {
         </RowDiv>
     );
 }
+
+const TestDiv = styled.div`
+background-color:grey;
+width:100%;
+height:30px;
+position:sticky;
+top:0px;
+z-index:30;
+
+`;
 
 
 
@@ -157,6 +179,7 @@ class ListSliderComponent extends Component {
 
         return (
             <ContainerDiv {...this.props} onScroll={this.onScrollEvent.bind(this)}>
+                <TestDiv>test</TestDiv>
                 <ItemSlider checkboxStyle={'red-highlighter'} color={this.colors['red']} ></ItemSlider>
                 <ItemSlider checkboxStyle={'yellow-highlighter'} color={this.colors['yellow']}></ItemSlider>
                 <ItemSlider checkboxStyle={'green-highlighter'} color={this.colors['green']}></ItemSlider>
