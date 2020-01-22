@@ -97,7 +97,7 @@ const ItemSlider = function (props) {
         let distCross = Math.abs((mx / width));
 
         const [swipeX, swipeY] = swipe;
-        console.log({ swipeX });
+
         if (mx < 0) {
 
             if (distCross > 0.37) {
@@ -106,7 +106,16 @@ const ItemSlider = function (props) {
                 set({ x: down ? mx : -8 });
             }
         } else {
-            (down) && set({ x: -8 });
+            //console.log({ distCross });
+
+            if (distCross < 0.37) {
+                (down) && set({ x: mx });
+            } else {
+                (!down) && set({ x: -8 });
+            }
+            (!down) && set({ x: -8 });
+
+
             // if (distCross > 0.20) {
             //     set({ x: -8 });
             // } else {
